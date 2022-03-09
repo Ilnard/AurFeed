@@ -825,12 +825,12 @@ function content(callback) {
      <div class="default-news all-news-block__news default-news-item">
          <div class="default-news__cover">
             <div class="default-news__blur" >
-                <img src="img/newsPict/${i+1}.jpg" class="default-news__media-blur" alt="1">
+                <img src="img/newsPict/${i+4}.jpg" class="default-news__media-blur" alt="1">
             </div>
-            <img src="img/newsPict/${i+1}.jpg" class="default-news__media" alt="">
+            <img src="img/newsPict/${i+4}.jpg" class="default-news__media" alt="">
          </div>
-         <p class="default-news__date">${news[i].date}</p>
-         <h2 class="default-news__title">${news[i].title}</h2>
+         <p class="default-news__date">${news[i+3].date}</p>
+         <h2 class="default-news__title">${news[i+3].title}</h2>
      </div>
      `;
         if (news[i].popular) {
@@ -840,10 +840,11 @@ function content(callback) {
             <div class="default-news__blur" >
                 <img src="img/newsPict/${i+1}.jpg" class="default-news__media-blur" alt="1">
             </div>
-            <img src="img/newsPict/${i+1}.jpg" class="default-news__media" alt="">
+            <img src="img/newsPict/${i+1}.jpg" class="default-news__media popular-news__media" alt="">
         </div>
-        <p class="default-news__date">${news[i].date}</p>
-        <h2 class="default-news__title">${news[i].title}</h2>
+        <p class="default-news__date popular-news__date">${news[i].date}</p>
+        <h2 class="default-news__title popular-news__title">${news[i].title}</h2>
+        <p class="default-news__text popular-news__text" style="display: none">${news[i].text}</p>
     </div>
     `
         }
@@ -896,22 +897,27 @@ function content(callback) {
     for (let i = 0; i < defaultNewsItems.length; i++) {
         defaultNewsItems[i].addEventListener('click', function () {
             document.querySelectorAll('.news-info img').forEach((item) => {
-                item.src = `img/newsPict/${i+1}.jpg`
+                item.src = `img/newsPict/${i+4}.jpg`
             })
-            document.querySelector('.news-info__date').innerHTML = news[i].date;
-            document.querySelector('.news-info__title').innerHTML = news[i].title;
-            document.querySelector('.news-info__text').innerHTML = news[i].text;
+            document.querySelector('.news-info__date').innerHTML = news[i+3].date;
+            document.querySelector('.news-info__title').innerHTML = news[i+3].title;
+            document.querySelector('.news-info__text').innerHTML = news[i+3].text;
             viewWindow.style.display = 'block'
         })
     }
+    const popularNewsItemsImg = document.querySelectorAll('.popular-news__media');
+    const popularNewsItemsDate = document.querySelectorAll('.popular-news__date');
+    const popularNewsItemsTitle = document.querySelectorAll('.popular-news__title');
+    const popularNewsItemsText = document.querySelectorAll('.popular-news__text');
     for (let i = 0; i < popularNewsItems.length; i++) {
+        console.log(popularNewsItemsDate[i].innerHTML)
         popularNewsItems[i].addEventListener('click', function () {
             document.querySelectorAll('.news-info img').forEach((item) => {
-                item.src = `img/newsPict/${i+1}.jpg`
+                item.src = popularNewsItemsImg[i].src
             })
-            document.querySelector('.news-info__date').innerHTML = news[i].date;
-            document.querySelector('.news-info__title').innerHTML = news[i].title;
-            document.querySelector('.news-info__text').innerHTML = news[i].text;
+            document.querySelector('.news-info__date').innerHTML = popularNewsItemsDate[i].innerHTML;
+            document.querySelector('.news-info__title').innerHTML = popularNewsItemsTitle[i].innerHTML;
+            document.querySelector('.news-info__text').innerHTML = popularNewsItemsText[i].innerHTML;
             viewWindow.style.display = 'block'
         })
     }

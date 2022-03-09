@@ -40,6 +40,9 @@ body {
     height: 100%;
     width: 100%;
 }
+.allnews {
+    display: none;
+}
 .container {
     display: block;
     width: 88%;
@@ -174,11 +177,11 @@ section {
     margin-bottom: 0;
 }
 .last-news-block__title_right {
-    font-size: 28px;
+    font-size: 24px;
     margin-bottom: 20px;
 }
 .last-news-block__date_right {
-    font-size: 18px;
+    font-size: 16px;
 }
 .all-news {
     display: block;
