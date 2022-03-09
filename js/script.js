@@ -884,7 +884,6 @@ function content(callback) {
     const viewWindow = document.querySelector('.news-info');
     for (let i = 0; i < allNewsItems.length; i++) {
         allNewsItems[i].addEventListener('click', function () {
-            console.log('click news')
             document.querySelectorAll('.news-info img').forEach((item) => {
                 item.src = `img/newsPict/${i+1}.jpg`
             })
@@ -896,7 +895,6 @@ function content(callback) {
     }
     for (let i = 0; i < defaultNewsItems.length; i++) {
         defaultNewsItems[i].addEventListener('click', function () {
-            console.log('click news')
             document.querySelectorAll('.news-info img').forEach((item) => {
                 item.src = `img/newsPict/${i+1}.jpg`
             })
@@ -908,7 +906,6 @@ function content(callback) {
     }
     for (let i = 0; i < popularNewsItems.length; i++) {
         popularNewsItems[i].addEventListener('click', function () {
-            console.log('click news')
             document.querySelectorAll('.news-info img').forEach((item) => {
                 item.src = `img/newsPict/${i+1}.jpg`
             })
